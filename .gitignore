@@ -1,0 +1,17 @@
+fnr/
+fpr/
+
+# -- EXTRA-DIRECTORIES:
+__*/
+.cpp-linter_cache/
+.direnv/
+build/
+build.*/
+codechecker.reports/
+codechecker.reports_html/
+
+# -- EXTRA-FILES:
+clang-tidy-checks.py
+*.log
+*.html
+__*.*

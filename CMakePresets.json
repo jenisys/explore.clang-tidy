@@ -1,0 +1,115 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "buildPresets": [
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "configuration": "Debug"
+    },
+    {
+      "name": "release",
+      "configurePreset": "release",
+      "configuration": "Release"
+    }
+  ],
+  "configurePresets": [
+    {
+      "hidden": true,
+      "name": "_cmake_build_type.debug",
+      "description": "CMAKE_BUILD_TYPE=Debug preset",
+      "binaryDir": "${sourceDir}/build.debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      },
+      "environment": {
+        "CMAKE_CONFIG_TYPE": "Debug"
+      }
+    },
+    {
+      "hidden": true,
+      "name": "_cmake_build_type.release",
+      "description": "CMAKE_BUILD_TYPE=Release preset",
+      "binaryDir": "${sourceDir}/build.release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      },
+      "environment": {
+        "CMAKE_CONFIG_TYPE": "Release"
+      }
+    },
+    {
+      "inherits": ["_cmake_build_type.debug"],
+      "name": "debug",
+      "displayName": "debug",
+      "description": "Debug preset",
+      "binaryDir": "${sourceDir}/build",
+      "generator": "Ninja Multi-Config"
+    },
+    {
+      "inherits": ["_cmake_build_type.release"],
+      "name": "release",
+      "displayName": "release",
+      "description": "Release preset",
+      "binaryDir": "${sourceDir}/build",
+      "generator": "Ninja Multi-Config"
+    }
+  ],
+  "testPresets": [
+    {
+      "configurePreset": "debug",
+      "name": "debug"
+    },
+    {
+      "configurePreset": "release",
+      "name": "release"
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "default",
+      "steps": [
+        {
+          "name": "debug",
+          "type": "configure"
+        },
+        {
+          "name": "debug",
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "name": "debug",
+      "steps": [
+        {
+          "name": "debug",
+          "type": "configure"
+        },
+        {
+          "name": "debug",
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "name": "release",
+      "steps": [
+        {
+          "name": "release",
+          "type": "configure"
+        },
+        {
+          "name": "release",
+          "type": "build"
+        }
+      ]
+    }
+  ]
+}

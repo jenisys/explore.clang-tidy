@@ -1,0 +1,13 @@
+---
+Checks: "*,
+  clang-diagnostic-*,
+  -llvmlibc-*,
+  -misc-*,
+  -altera-*,
+  "
+WarningsAsErrors: "bugprone-*,cert-*"
+# WarningsAsErrors: "bugprone-*,cert-*,clang-analyzer-*"
+HeaderFilterRegex: ""
+FormatStyle:     none
+...
+

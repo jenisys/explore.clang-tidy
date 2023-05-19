@@ -1,0 +1,32 @@
+# =====================================================
+# INVOKE CONFIGURATION:
+# =====================================================
+# -- ON WINDOWS:
+# run:
+#   echo: true
+#   pty:  false
+#   shell: C:\Windows\System32\cmd.exe
+# MAYBE: tasks: auto_dash_names: false
+# =====================================================
+# SEE: https://pyinvoke.org/
+
+cleanup:
+    extra_directories:
+      - "build"
+      - "build.*"
+      - "codechecker.reports"
+      - "codechecker.reports_html"
+      - ".cpp-linter_cache"
+
+    extra_files:
+      - "clang-tidy-checks.py"
+      - "*.html"
+      - "*.log"
+
+cleanup_all:
+    extra_directories:
+      - .direnv
+      - ".venv*"
+
+#    extra_files:
+#      - "codechecker.json"

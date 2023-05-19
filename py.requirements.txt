@@ -1,0 +1,58 @@
+# =============================================================
+# PYTHON PACKAGE REQUIREMENTS:
+# =============================================================
+# USE: pip install -r <THIS_FILE>
+#
+# RELATED TO: clang-tidy, run-clang-tidy
+# * https://releases.llvm.org/16.0.0/tools/clang/tools/extra/docs/clang-tidy/index.html
+#   https://github.com/llvm/llvm-project
+#   https://github.com/llvm/llvm-project/tree/main/clang-tools-extra
+#   https://www.kdab.com/clang-tidy-part-1-modernize-source-code-using-c11c14/
+#
+# RELATED: EXAMPLE REPO to use clang-tidy
+# * https://github.com/polystat/clang-tidy-mistakes
+#
+# RELATED: clang-tidy runner/wrapper
+# * https://github.com/lmapii/run-clang-tidy
+#   -- OTHER run-clang-tidy (using: Rust), parallel runner that allows to select sources to use
+#   -- USE: cargo install run-clang-tidy
+#
+# * https://github.com/Ericsson/codechecker
+#     CodeChecker check --logfile build.multi/compile_commands.json -o results/
+#     CodeChecker parse -e html ./results -o ./reports_html
+#
+# RELATED: Additional tools for clang-tidy output, ...
+# * https://github.com/austinbhale/clang-tidy-html
+#   -- Provides an HTML report, BAD IF: --list-checks are used (like: run-clang-tidy)
+#
+# RELATED: Install clang-tidy, ... tools by using pip as package manager
+# * https://github.com/cpp-linter/clang-tools-pip
+#   -- Tool to install "clang-tools" that allows you to down the clang-tools in a version.
+#
+# MORE RUNNERS: clang-tidy runner/wrapper
+#  * https://github.com/cpp-linter/cpp-linter
+#  * https://github.com/rasjani/processcdb
+#
+# SCRATCHPAD:
+#   https://github.com/huuanhhuynguyen/cpp_quality_benchmark
+# =============================================================
+
+codechecker
+clang-html
+
+# -- DEVELOP SUPPORT:
+# BAD-LOCAL-FILE: /Users/xxx/.../invoke-cleanup
+invoke >= 1.7.0
+git+https://github.com/jenisys/invoke-cleanup@v0.3.7
+git+https://github.com/jenisys/cmake-build
+
+# -- BUILD-SUPPORT: Normally not needed
+# HINT: Install cmake, ninja via pip package manager.
+#  cmake
+#  ninja
+
+# -- DISABLED:
+#  clang-tools
+#  cpp-linter
+#  processcdb
+

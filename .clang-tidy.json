@@ -1,0 +1,9 @@
+{
+    "paths": [
+      "false-negative/**/*.cpp"
+    ],
+    "buildRoot": "build.debug",
+    "tidyFile": ".clang-tidy",
+    "tidyRoot": ".",
+    "command": "/usr/local/opt/llvm/bin/clang-tidy"
+}
