@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/polystat/clang-tidy-mistakes.git
+	branch = master
+	commit = 3f968dbf659749267dbcc0d312bfde73683de5d3
+	parent = 87f91fe95609a118414cd92316257c116ba3b583
+	method = merge
+	cmdver = 0.4.6
