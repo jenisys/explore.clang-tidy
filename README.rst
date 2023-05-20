@@ -12,18 +12,25 @@ SUMMARY:
 
 * Use `clang-tidy`_ for only one file or directory
 * Use `run-clang-tidy`_ in parallel for a complete project
-  ALTERNATIVES: Other clang-tidy runner wrappers ...
+
+    ALTERNATIVE: Use OTHER clang-tidy runner/wrappers.
+
 * The Rust-based "run-clang-tidy" tool looks really interesting
   (usability is better than the original `run-clang-tidy`_)
+
 * Use codechecker to detect more errors and better explanations.
-  HINT: codechecker runs `clang-tidy`_, `cppcheck`_ and ...
+
+    HINT: codechecker runs `clang-tidy`_ , `cppcheck`_ and ...
 
 SEE ALSO:
 
 * https://clang.llvm.org/extra/clang-tidy/
 * https://clang.llvm.org/extra/index.html
-* SOURCE CODE: https://github.com/llvm/llvm-project
-  https://github.com/llvm/llvm-project/tree/main/clang-tools-extra
+
+SOURCE CODE REPOS:
+
+* https://github.com/llvm/llvm-project
+* https://github.com/llvm/llvm-project/tree/main/clang-tools-extra
 
 RELATED: Examples as project to explore clang-tidy
 
@@ -38,10 +45,6 @@ RELATED: Articles on clang-tidy
 .. _clang-tools-extra: https://clang.llvm.org/extra/index.html
 .. _cppcheck: http://cppcheck.net
 .. _run-clang-tidy: https://clang.llvm.org/extra/doxygen/run-clang-tidy_8py_source.html
-
-.. hidden:
-
-    https://github.com/mloskot/clang-tidy-test
 
 
 USE: clang-tidy, run-clang-tidy
@@ -126,12 +129,12 @@ Use `clang-tidy`_ to work on one file (or some files only):
 USE: clang-tidy WarningsAsErrors
 -------------------------------------------------------------------------------
 
-Config-file schema:
+Config-file schema::
 
     WarningsAsErrors : string = "rule-names"
     # -- SAME SYNTAX AS: Checks : string = "rule-names"
 
-Enable all warnings as errors (use: "*"):
+Enable all warnings as errors (use: ``"*" = match-any-checker``):
 
 .. code::
 
@@ -139,12 +142,12 @@ Enable all warnings as errors (use: "*"):
     WarningsAsErrors: '*'
     ...
 
-Disable all warnings as errors (use: "" = EMPTY_STRING):
+Disable all warnings as errors (use: ``"" = EMPTY_STRING``):
 
 .. code::
 
     ...
-    WarningsAsErrors: ''
+    WarningsAsErrors: ""
     ...
 
 
@@ -166,6 +169,7 @@ Use it:
 
     # -- ASSUMPTION: Rust is installed in the $HOME directory of the user.
     # SAME NAME: This tool and "run-clang-tidy" (from: clang-extra-tools)
+    $ cmake-build
     $ $HOME/.cargo/bin/run-clang-tidy .clang_tidy.json
 
     # -- RUN PARALLEL: With 4 jobs
@@ -334,4 +338,6 @@ SCRATCHPAD
 RELATED TO: clang-tidy
 
 * https://github.com/sasq64/autotidy
+* https://github.com/mloskot/clang-tidy-test (uses: autotidy)
+
 
