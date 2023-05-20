@@ -1,0 +1,45 @@
+DEVELOPMENT ASPECTS
+===============================================================================
+
+
+PROGRAMMING LANGUAGES
+-------------------------------------------------------------------------------
+
+* C++: As source code examples for using `clang-tidy`_
+* `Python`_: Used for many tools, like `clang-tidy`_ runners
+* `Rust`_: Used for one `clang-tidy`_ runner
+
+SEE ALSO:
+
+* https://en.cppreference.com/w/cpp
+* https://python.org (for python packages: https://pypi.org )
+* https://www.rust-lang.org
+
+
+.. _clang-tidy: https://releases.llvm.org/16.0.0/tools/clang/tools/extra/docs/clang-tidy/index.html
+.. _Python: https://python.org
+.. _Rust: https://www.rust-lang.org
+
+
+VERSION CONTROL:
+-------------------------------------------------------------------------------
+
+* DEFAULT BRANCH: Use "main" as default branch
+* Use `git-subrepo`_` to manage additional git-repositories
+* Use ``git subrepo status`` to show all sub-repository(s)
+
+GIT-SUBREPOSITORIES:
+
+* clang-tidy-mistakes: https://github.com/polystat/clang-tidy-mistakes.git
+
+
+SEE ALSO:
+
+* https://github.com/ingydotnet/git-subrepo
+
+RELATED: git-subrep
+
+* http://blog.s-schoener.com/2019-04-20-git-subrepo/
+
+.. _git-subrepo: https://github.com/ingydotnet/git-subrepo
+

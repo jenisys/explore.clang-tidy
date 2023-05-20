@@ -8,6 +8,7 @@ from __future__ import absolute_import, print_function
 from contextlib import contextmanager
 from io import StringIO
 from pathlib import Path
+import os
 import sys
 from invoke import task, Collection
 
@@ -18,8 +19,10 @@ import invoke_cleanup as cleanup
 # -----------------------------------------------------------------------------
 # CONSTANTS
 # -----------------------------------------------------------------------------
-BUILD_DIR = Path("build.debug")
+BUILD_DIR = Path("build")
 COMPILE_COMMANDS_FILE = BUILD_DIR/"compile_commands.json"
+CLANG_TIDY_MISTAKES_PROJECT_DIR = "clang-tidy-mistakes"
+CARGO_RUN_CLANG_TIDY = os.environ.get("CARGO_RUN_CLANG_TIDY", "$HOME/.cargo/bin/run-clang-tidy")
 
 
 # -----------------------------------------------------------------------------
@@ -79,7 +82,8 @@ def clang_tidy(ctx, source_path=None):
     if source_path:
         source_path = _require_existing_source_file_or_directory(source_path)
     else:
-        source_path = "false-negative/*.cpp"
+        project_prefix = CLANG_TIDY_MISTAKES_PROJECT_DIR
+        source_path = f"{project_prefix}/false-negative/*.cpp"
     ctx.run(f"clang-tidy -p {build_dir} {source_path}",
             echo=True, pty=True)
 
@@ -115,7 +119,8 @@ def run_clang_tidy(ctx, jobs=1):
 @task(pre=[_ensure_compile_database_exists])
 def cargo_run_clang_tidy(ctx, jobs=1):
     """Use run-clang-tidy <https://github.com/lmapii/run-clang-tidy>"""
-    ctx.run(f"$HOME/.cargo/bin/run-clang-tidy .clang-tidy.json -j {jobs}",
+    cargo_run_clang_tidy = CARGO_RUN_CLANG_TIDY
+    ctx.run(f"{cargo_run_clang_tidy} .clang-tidy.json -j {jobs}",
             echo=True, pty=True)
 
 

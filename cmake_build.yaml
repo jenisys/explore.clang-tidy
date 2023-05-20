@@ -1,0 +1,51 @@
+# ===========================================================================
+# CMAKE-BUILD CONFIGURATION: cmake_build.yaml
+# ===========================================================================
+# PROJECT: cxx.explore
+# DESCRIPTION:
+#   * Specifies one (or more) CMake projects to build.
+#   * Simplifies CMake project setup by providing pre-canned recipes
+#     for the build-configurations, cmake-toolchains, cmake-generators, etc.
+#   * Simplifies usage of multiple cmake-toolchains
+#   * Simplifies usage of multiple cmake-generators
+#
+# SEE ALSO:
+#   * https://github.com/jenisys/cmake-build
+# ===========================================================================
+
+cmake_generator: ninja
+cmake_defines:
+  - CMAKE_EXPORT_COMPILE_COMMANDS: ON
+
+# build_dir_schema: "build.{BUILD_CONFIG}"
+build_dir_schema: "build"
+build_config: multi
+build_configs:
+  - debug
+  - release
+  - multi:
+      cmake_generator: ninja.multi
+
+run:
+  echo: true
+  # DISABLED: shell: /bin/sh
+
+cleanup:
+  extra_directories:
+    - "build"
+    - "build.*"
+    - "codechecker.reports"
+    - "codechecker.reports_html"
+    - ".cpp-linter_cache"
+
+  extra_files:
+    - "clang-tidy-checks.py"
+    - "*.html"
+    - "*.log"
+
+cleanup_all:
+  extra_directories:
+    - "build.*"
+    - .direnv
+    - .pytest_cache
+    - ".venv*"
