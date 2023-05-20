@@ -21,7 +21,7 @@ SEE ALSO:
 .. _Rust: https://www.rust-lang.org
 
 
-VERSION CONTROL:
+VERSION CONTROL
 -------------------------------------------------------------------------------
 
 * DEFAULT BRANCH: Use "main" as default branch
@@ -43,3 +43,19 @@ RELATED: git-subrep
 
 .. _git-subrepo: https://github.com/ingydotnet/git-subrepo
 
+
+USE: direnv
+-------------------------------------------------------------------------------
+
+* Use `direnv`_ to setup environment variables for this project
+  when the project directory is entered
+  and cleaned up and the old state restored when the directory is left
+
+FILE(s):
+
+* `.envrc <.envrc>`_
+
+SEE ALSO:
+
+* https://direnv.net/
+* https://github.com/direnv/direnv

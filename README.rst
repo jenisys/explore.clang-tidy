@@ -94,6 +94,7 @@ Use `clang-tidy`_ to work on one file (or some files only):
 
     # -- USE: clang-tidy on one source-file
     # REQUIRES: ${BUILD_DIR}/compile_commands.json
+    # SIMILAR to cmake-build: cmake --workflow --preset=debug
     $ cmake-build
     $ clang-tidy -p ${BUILD_DIR} src/some_file.cpp
 
@@ -105,7 +106,7 @@ Use `clang-tidy`_ to work on one file (or some files only):
 
     # -- HINT: run-clang-tidy can run multiple jobs in parallel.
     # REQUIRES: ${BUILD_DIR}/compile_commands.json
-    export BUILD_DIR=build.multi
+    export BUILD_DIR="build"
     $ cmake-build
     $ run-clang-tidy -p ${BUILD_DIR}
 
@@ -293,6 +294,8 @@ USE: cppcheck as C++ static code analysis tool
 USE: cpp-linter
 -------------------------------------------------------------------------------
 
+:Hint: clang-tidy runner
+
 .. code:: bash
 
     # -- SHELL=bash
@@ -307,7 +310,7 @@ SEE ALSO:
 * https://github.com/cpp-linter/cpp-linter
 
 
-SCRATCHPAD: processcdb
+USE: processcdb
 -------------------------------------------------------------------------------
 
 :Hint: clang-tidy wrapper
@@ -331,18 +334,4 @@ SCRATCHPAD
 RELATED TO: clang-tidy
 
 * https://github.com/sasq64/autotidy
-
-  UNRELATED:  https://github.com/ClausKlein/samples
-
-* https://github.com/lmapii/run-clang-tidy
-  -- Rust
-* https://github.com/cpp-linter/clang-tools-pip
-  -- Tool to install "clang-tools" that allows you to down the clang-tools in a version.
-* https://github.com/austinbhale/clang-tidy-html
-
-
-RELATED: CMake
-
-* https://github.com/aminya/project_options
-* https://github.com/cpp-best-practices/cmake_template
 
