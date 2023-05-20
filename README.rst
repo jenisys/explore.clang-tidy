@@ -12,15 +12,14 @@ SUMMARY:
 
 * Use `clang-tidy`_ for only one file or directory
 * Use `run-clang-tidy`_ in parallel for a complete project
+  (or use OTHER `clang-tidy`_ runners)
 
-    ALTERNATIVE: Use OTHER clang-tidy runner/wrappers.
-
-* The Rust-based "run-clang-tidy" tool looks really interesting
-  (usability is better than the original `run-clang-tidy`_)
+* The Rust-based `cargo-run-clang-tidy`_ tool
+  looks really interesting (usability is better than the original `run-clang-tidy`_)
 
 * Use codechecker to detect more errors and better explanations.
 
-    HINT: codechecker runs `clang-tidy`_ , `cppcheck`_ and ...
+  **HINT:** codechecker runs `clang-tidy`_ , `cppcheck`_ and ...
 
 SEE ALSO:
 
@@ -45,6 +44,7 @@ RELATED: Articles on clang-tidy
 .. _clang-tools-extra: https://clang.llvm.org/extra/index.html
 .. _cppcheck: http://cppcheck.net
 .. _run-clang-tidy: https://clang.llvm.org/extra/doxygen/run-clang-tidy_8py_source.html
+.. _cargo-run-clang-tidy: https://github.com/lmapii/run-clang-tidy
 
 
 USE: clang-tidy, run-clang-tidy
@@ -139,7 +139,7 @@ Enable all warnings as errors (use: ``"*" = match-any-checker``):
 .. code::
 
     ...
-    WarningsAsErrors: '*'
+    WarningsAsErrors: "*"
     ...
 
 Disable all warnings as errors (use: ``"" = EMPTY_STRING``):
