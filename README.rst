@@ -21,7 +21,7 @@ SUMMARY:
 
   **HINT:** codechecker runs `clang-tidy`_ , `cppcheck`_ and ...
 
-SEE ALSO:
+**SEE ALSO:**
 
 * https://clang.llvm.org/extra/clang-tidy/
 * https://clang.llvm.org/extra/index.html
@@ -31,12 +31,11 @@ SOURCE CODE REPOS:
 * https://github.com/llvm/llvm-project
 * https://github.com/llvm/llvm-project/tree/main/clang-tools-extra
 
-RELATED: Examples as project to explore clang-tidy
+**RELATED:** EXAMPLE-PORJECT(s) to explore clang-tidy
 
-* https://github.com/polystat/clang-tidy-mistakes
-  EXAMPLES: that clang-tidy can find
+* https://github.com/polystat/clang-tidy-mistakes (as EXAMPLE-PROJECT)
 
-RELATED: Articles on clang-tidy
+**RELATED:** Articles on clang-tidy
 
 * https://www.kdab.com/clang-tidy-part-1-modernize-source-code-using-c11c14/
 
@@ -50,7 +49,7 @@ RELATED: Articles on clang-tidy
 USE: clang-tidy, run-clang-tidy
 -------------------------------------------------------------------------------
 
-CONFIG-FILE EXAMPLE: $HERE/.clang-tidy
+CONFIG-FILE EXAMPLE: ``$HERE/.clang-tidy``
 
 * ``Checks``: Leading MINUS sign disables a rule / rule-set
 * ``Checks``: List of rules / rule-sets separated with comma
@@ -98,6 +97,7 @@ Use `clang-tidy`_ to work on one file (or some files only):
     # -- USE: clang-tidy on one source-file
     # REQUIRES: ${BUILD_DIR}/compile_commands.json
     # SIMILAR to cmake-build: cmake --workflow --preset=debug
+    $ export BUILD_DIR="build"
     $ cmake-build
     $ clang-tidy -p ${BUILD_DIR} src/some_file.cpp
 
@@ -109,7 +109,6 @@ Use `clang-tidy`_ to work on one file (or some files only):
 
     # -- HINT: run-clang-tidy can run multiple jobs in parallel.
     # REQUIRES: ${BUILD_DIR}/compile_commands.json
-    export BUILD_DIR="build"
     $ cmake-build
     $ run-clang-tidy -p ${BUILD_DIR}
 
