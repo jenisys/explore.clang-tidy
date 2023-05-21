@@ -49,3 +49,7 @@ cleanup_all:
     - .direnv
     - .pytest_cache
     - ".venv*"
+
+  extra_files:
+    - ".done.*"
+

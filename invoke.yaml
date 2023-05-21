@@ -28,5 +28,6 @@ cleanup_all:
       - .direnv
       - ".venv*"
 
-#    extra_files:
-#      - "codechecker.json"
+    extra_files:
+      - ".done.*"
+
