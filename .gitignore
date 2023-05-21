@@ -11,6 +11,8 @@ codechecker.reports/
 codechecker.reports_html/
 
 # -- EXTRA-FILES:
+.done.*
+.ninja_log
 clang-tidy-checks.py
 *.log
 *.html
