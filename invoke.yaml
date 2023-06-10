@@ -14,6 +14,7 @@ cleanup:
     extra_directories:
       - "build"
       - "build.*"
+      - "cmake-build-*"
       - "codechecker.reports"
       - "codechecker.reports_html"
       - ".cpp-linter_cache"
@@ -27,6 +28,7 @@ cleanup_all:
     extra_directories:
       - .direnv
       - ".venv*"
+      - ".tox"
 
     extra_files:
       - ".done.*"

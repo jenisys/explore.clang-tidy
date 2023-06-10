@@ -15,14 +15,30 @@
       "name": "release",
       "configurePreset": "release",
       "configuration": "Release"
+    },
+    {
+      "name": "multi",
+      "configurePreset": "multi",
+      "configuration": "Debug"
+    },
+    {
+      "name": "multi.debug",
+      "configurePreset": "multi",
+      "configuration": "Debug"
+    },
+    {
+      "name": "multi.release",
+      "configurePreset": "multi.release",
+      "configuration": "Release"
     }
   ],
   "configurePresets": [
     {
       "hidden": true,
-      "name": "_cmake_build_type.debug",
+      "name": "_setup.cmake_build_type.debug",
       "description": "CMAKE_BUILD_TYPE=Debug preset",
       "binaryDir": "${sourceDir}/build.debug",
+      "generator": "Ninja",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
@@ -33,9 +49,10 @@
     },
     {
       "hidden": true,
-      "name": "_cmake_build_type.release",
-      "description": "CMAKE_BUILD_TYPE=Release preset",
+      "name": "_setup.cmake_build_type.release",
+      "description": "Preset for CMAKE_BUILD_TYPE=Release",
       "binaryDir": "${sourceDir}/build.release",
+      "generator": "Ninja",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
@@ -45,46 +62,68 @@
       }
     },
     {
-      "inherits": ["_cmake_build_type.debug"],
+      "inherits": ["_setup.cmake_build_type.debug"],
       "name": "debug",
       "displayName": "debug",
       "description": "Debug preset",
+      "binaryDir": "${sourceDir}/build.${hostSystemName}_debug",
+      "generator": "Ninja"
+    },
+    {
+      "inherits": ["_setup.cmake_build_type.release"],
+      "name": "release",
+      "displayName": "release",
+      "description": "Release preset",
+      "binaryDir": "${sourceDir}/build.${hostSystemName}_release",
+      "generator": "Ninja"
+    },
+    {
+      "inherits": ["_setup.cmake_build_type.debug"],
+      "name": "multi",
+      "displayName": "multi",
+      "description": "Preset for multi-config generators, like: Ninja Multi-Config",
       "binaryDir": "${sourceDir}/build",
       "generator": "Ninja Multi-Config"
     },
     {
-      "inherits": ["_cmake_build_type.release"],
-      "name": "release",
-      "displayName": "release",
-      "description": "Release preset",
+      "inherits": ["_setup.cmake_build_type.release"],
+      "name": "multi.release",
+      "displayName": "multi.release",
+      "description": "Preset for multi-config generators, like: Ninja Multi-Config",
       "binaryDir": "${sourceDir}/build",
       "generator": "Ninja Multi-Config"
     }
   ],
   "testPresets": [
     {
-      "configurePreset": "debug",
-      "name": "debug"
+      "hidden": true,
+      "name": "_test.common",
+      "output": {
+        "outputOnFailure": true,
+        "outputLogFile": "ctest_output.log"
+      },
+      "execution": {
+        "noTestsAction": "error",
+        "stopOnFailure": false
+      }
     },
     {
-      "configurePreset": "release",
-      "name": "release"
+      "inherits": ["_test.common"],
+      "name": "debug",
+      "configurePreset": "debug"
+    },
+    {
+      "inherits": ["_test.common"],
+      "name": "release",
+      "configurePreset": "release"
+    },
+    {
+      "inherits": ["_test.common"],
+      "name": "multi",
+      "configurePreset": "multi"
     }
   ],
   "workflowPresets": [
-    {
-      "name": "default",
-      "steps": [
-        {
-          "name": "debug",
-          "type": "configure"
-        },
-        {
-          "name": "debug",
-          "type": "build"
-        }
-      ]
-    },
     {
       "name": "debug",
       "steps": [
@@ -107,6 +146,45 @@
         },
         {
           "name": "release",
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "name": "multi",
+      "steps": [
+        {
+          "name": "multi",
+          "type": "configure"
+        },
+        {
+          "name": "multi",
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "name": "multi.debug",
+      "steps": [
+        {
+          "name": "multi",
+          "type": "configure"
+        },
+        {
+          "name": "multi.debug",
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "name": "multi.release",
+      "steps": [
+        {
+          "name": "multi.release",
+          "type": "configure"
+        },
+        {
+          "name": "multi.release",
           "type": "build"
         }
       ]
