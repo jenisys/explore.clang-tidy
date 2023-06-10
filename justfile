@@ -86,10 +86,11 @@ bootstrap: (_ensure_packages_are_installed "python") (_ensure_packages_are_insta
 #     build {{COMPILE_COMMANDS_FILE}}: cmake_build
 
 _ensure_compile_database_exists:
+    #!/usr/bin/env {{PYTHON}}
     #!/usr/bin/env python3
     from subprocess import run
     from os import path
-    if not path.exists("{{COMPILE_COMMANDS_FILE}}"):
+    if not path.exists(r"{{COMPILE_COMMANDS_FILE}}"):
         print("NEEDS: build")
         run("just build", shell=True)
 
@@ -103,7 +104,7 @@ build: (_ensure_packages_are_installed "python")
 
 
 CPP_SOURCES_PATTERN := "clang-tidy-mistakes/**/*.cpp"
-CPP_SOURCES := `python3 .just.glob.py "clang-tidy-mistakes/**/*.cpp" `
+CPP_SOURCES := `python3 .justlib.glob.py "clang-tidy-mistakes/**/*.cpp" `
 
 # Run clang-tidy (from: clang-extra-tools)
 clang-tidy *SOURCES=CPP_SOURCES: _ensure_compile_database_exists

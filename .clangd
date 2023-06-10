@@ -1,0 +1,7 @@
+# SEE: https://www.jetbrains.com/help/fleet/configure-cpp-clangd.html
+CompileFlags:
+    Remove:
+        - -forward-unknown-to-host-compiler
+        - --generate-code*
+        - -rdc=*
+        - -Xcompiler*
